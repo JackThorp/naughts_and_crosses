@@ -1,0 +1,11 @@
+{
+  "name": "naughts_and_crosses",
+  "version": "1.0.0",
+  "description": "Simple naughts and crosses game to be played in the browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
