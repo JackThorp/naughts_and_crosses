@@ -55,8 +55,6 @@ describe('board', function() {
       });
 
     })
-
-
-
   })
 })
+
