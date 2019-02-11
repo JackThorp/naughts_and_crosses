@@ -21,16 +21,16 @@ function Board() {
   }
 
   this.write_square = function(row, col, symbol) {
-    if (row < 0 || this.size <= row) { return undefined; }
-    if (col < 0 || this.size <= col) { return undefined; }
+    if (row < 0 || this.size <= row) { return false; }
+    if (col < 0 || this.size <= col) { return false; }
 
     // Cannot write on square that's already filled.
-    if (this.grid[row][col] != EMPTY) { return undefined; }
+    if (this.grid[row][col] != EMPTY) { return false; }
 
     // Can only write set of writable symbols
-    if (!symbols.includes(symbol)) {return undefined; }
+    if (!symbols.includes(symbol)) {return false; }
 
-    return this.grid[row][col] = symbol;
+    return !!(this.grid[row][col] = symbol);
 
   }
 }
