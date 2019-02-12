@@ -17,19 +17,17 @@ function NaughtsAndCrosses() {
     let row = Math.floor(_square / size);
     let col = _square % size;
     
-    this.nextTurn();
-    console.log("row:" + row + "  col:" + col + "  turn:" + turn);
+    turn = this.nextTurn();
 
     return this.grid.write_square(row, col, turn); 
     
 
   }
 
-  // turn (captured by closure is 1 or 2. 
-  // _turn is either 0 or 1 to aid calculation
+  // A getter that returns the symbol or ID of the next player - has no side effects. 
   this.nextTurn = function() {
     let _turn = turn - 1;
-    return turn = (_turn * -_turn) + 2;
+    return (_turn * -_turn) + 2;
   }
 
 }

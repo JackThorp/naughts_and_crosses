@@ -13,9 +13,10 @@ describe('NaughtsAndCrosses - naughts and crosses game', function() {
   // For now first turn of new game defaults to naught.
   it('should toggle turns starting with naughts == 1', function() {
     expect(game.nextTurn()).to.equal(1);
+    game.go(1);
     expect(game.nextTurn()).to.equal(2);
-    //expect(game.nextTurn()).to.equal(1);
-    //expect(game.nextTurn()).to.equal(2);
+    game.go(4);
+    expect(game.nextTurn()).to.equal(1);
   });
 
   // Squares are numbered from 1 - gridsize x gridsize
