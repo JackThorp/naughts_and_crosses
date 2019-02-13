@@ -19,24 +19,43 @@ describe('NaughtsAndCrosses - naughts and crosses game', function() {
     expect(game.nextTurn()).to.equal(1);
   });
 
-  // Squares are numbered from 1 - gridsize x gridsize
-  it('should throw Error and not accept a square if out of range', function() {
-    // expect must be passed a function - not a result in order to test for exception
-    expect(game.go.bind(game, 0)).to.throw(Error);    
-    expect(game.go.bind(game,10)).to.throw(Error);
-  });
+  describe('#go(...)', function() {
+   
+    // Squares are numbered from 1 - gridsize x gridsize
+    it('should throw Error and not accept a square if out of range', function() {
+      // expect must be passed a function - not a result in order to test for exception
+      expect(game.go.bind(game, 0)).to.throw(Error);    
+      expect(game.go.bind(game,10)).to.throw(Error);
+    });
 
-  it('should return true when move is accepted', function() {
-    expect(game.go(1)).to.equal(true);
-    expect(game.go(6)).to.equal(true);
-    expect(game.go(9)).to.equal(true);
-  });
+    it('should return true when move is accepted', function() {
+      expect(game.go(1)).to.equal(true);
+      expect(game.go(6)).to.equal(true);
+      expect(game.go(9)).to.equal(true);
+    });
 
-  it('should return false if square is already occupied', function() {
-    game.go(4);
-    expect(game.go(4)).to.equal(false);
-  });
+    it('should return false if square is already occupied', function() {
+      game.go(4);
+      expect(game.go(4)).to.equal(false);
+    });
 
+    it.only('should call win handler if move completes a line', function(done) {
+      
+      game = new NaughtsAndCrosses(function(winner) {
+        expect(winner).to.equal(3);
+        done();
+      });
+
+      //
+      game.go(1);
+      game.go(4);
+      game.go(2);
+      //game.go(5);
+      //game.go(3);
+
+    })
+
+  });
 
   describe('#new_game()', function(){
     

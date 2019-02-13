@@ -61,38 +61,51 @@ describe('board', function() {
         board.write_square(0,0,2);
         board.write_square(0,1,2);
         board.write_square(0,2,2);
-        expect(board.checkWinner()).to.equal(2);
+        expect(board.checkWinner(function(winner){
+          expect(winner).be.equal(2);
+        })).to.equal(2);
        
         board = new Board();
         board.write_square(2,0,1);
         board.write_square(2,1,1);
         board.write_square(2,2,1);
-        expect(board.checkWinner()).to.equal(1);
+        expect(board.checkWinner(function(winner){
+          expect(winner).to.equal(1);
+        })).to.equal(1);
       });
 
       it('should return the symbol if a player has made a full column', function() {
         board.write_square(0,0,2);
         board.write_square(1,0,2);
         board.write_square(2,0,2);
-        expect(board.checkWinner()).to.equal(2);
+        expect(board.checkWinner(function(winner){
+          expect(winner).to.equal(2);
+        })).to.equal(2);
         
         board = new Board();
         board.write_square(0,1,1);
         board.write_square(1,1,1);
         board.write_square(2,1,1);
-        expect(board.checkWinner()).to.equal(1);
+        expect(board.checkWinner(function(winner){
+          expect(winner).to.equal(1);
+        })).to.equal(1);
       });
 
       it('should return symbol if a player has completed a full diaganol', function() {
         board.write_square(0,0,1);
         board.write_square(1,1,1);
         board.write_square(2,2,1);
-        expect(board.checkWinner()).to.equal(1); 
-        
+        expect(board.checkWinner(function(winner) {
+          expect(winner).to.equal(1);
+        })).to.equal(1); 
+       
+        board = new Board();
         board.write_square(0,2,2);
         board.write_square(1,1,2);
         board.write_square(2,0,2);
-        expect(board.checkWinner()).to.equal(1); 
+        expect(board.checkWinner(function(winner) {
+          expect(winner).to.equal(2);
+        })).to.equal(2); 
       })
 
       it('should return false if no player has won', function() {

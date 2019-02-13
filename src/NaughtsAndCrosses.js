@@ -1,6 +1,6 @@
 var Board = require('./board');
 
-function NaughtsAndCrosses() {
+function NaughtsAndCrosses(winCallback) {
 
   // Better way to use symbol mapping??
   var turn = 2;
@@ -19,9 +19,12 @@ function NaughtsAndCrosses() {
     
     turn = this.nextTurn();
 
-    return this.grid.write_square(row, col, turn); 
-    
+    let move = this.grid.write_square(row, col, turn);
 
+    this.grid.print();
+    this.grid.checkWinner(winCallback);
+
+    return move;
   }
 
   // A getter that returns the symbol or ID of the next player - has no side effects. 
