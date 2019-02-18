@@ -4,15 +4,31 @@
   "description": "Simple naughts and crosses game to be played in the browser",
   "main": "src/app.js",
   "scripts": {
-    "test": "mocha"
+    "start": "nodemon src/server/index.js",
+    "build": "webpack --mode production",
+    "test": "mocha --compilers babel-core/register test/*test.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.3.3",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "babel": "^6.23.0",
+    "babel-loader": "^8.0.5",
     "chai": "^4.2.0",
-    "mocha": "^5.2.0"
+    "css-loader": "^2.1.0",
+    "enzyme": "^3.9.0",
+    "mocha": "^5.2.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3"
   }
 }
