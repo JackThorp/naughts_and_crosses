@@ -1,7 +1,7 @@
 import React from 'react';
-import {render} from 'react-dom';
+import ReactDom from 'react-dom';
 //import App from './components/App.jsx';
-//import styles from './scss/application.scss';
+import styles from './scss/application.scss';
 
 
 class Square extends React.Component {
@@ -63,7 +63,7 @@ class Game extends React.Component {
 }
 
 // ===================================
-render( 
+ReactDom.render( 
   <Game />,
   document.getElementById('root')
 );
