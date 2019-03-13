@@ -3,6 +3,22 @@ import ReactDom from 'react-dom';
 //import App from './components/App.jsx';
 import styles from './scss/application.scss';
 
+class NewGameDialogue extends React.Component {
+ 
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        <p> Game Type: {this.props.gameType} </p>
+        <button onClick={() => this.props.onClick("Computer")}> vs Computer </button>
+        <button onClick={() => this.props.onClick("Player")}> vs Another Player </button>
+      </div>
+    );
+  }
+}
 
 function Square(props) {
   return (
@@ -56,7 +72,10 @@ class Game extends React.Component {
       }],
       stepNumber: 0,
       xIsNext: true,
+      gameType: "Undecided",
+      newGame: true,
     }
+    this.handleNewGame = this.handleNewGame.bind(this);
   }
 
   jumpTo(step) {
@@ -90,7 +109,16 @@ class Game extends React.Component {
     });
   }
 
+  handleNewGame(choice) {
+    this.setState({gameType: choice, newGame: false});
+  }
+
   render() {
+
+    if(this.state.newGame) {
+      return (<NewGameDialogue onClick={this.handleNewGame} gameType={this.state.gameType}/>)
+    }
+
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner  = calculateWinner(current.squares);
@@ -107,9 +135,12 @@ class Game extends React.Component {
 
     });
 
+
+    let newGame;
     let status;
     if (winner) {
       status = 'Winner: ' + winner;
+       newGame = <button onClick={() => this.setState({newGame: true})}> Play Again </button>;
     } else {
       status = 'Next Player: ' + (this.state.xIsNext ? 'X' : 'O');
     }
@@ -122,6 +153,7 @@ class Game extends React.Component {
         <div className="game-info">
           <div>{status}</div>
           <ol> {moves}</ol>
+          <div>{newGame}</div>
         </div>
       </div>
     );
