@@ -9,11 +9,12 @@ const config = {
   entry: {
     main: path.join(APP_DIR, 'index.js')
   },
+
   output: {
     filename: 'bundle.js',
     path: BUILD_DIR
   },
-  
+
   module: {
     rules: [
       {
