@@ -15,3 +15,7 @@ Feature & Extensions list:
 - Allow players to draw their own symbols
 - Allow players to create log ins and persist scores / high scores etc
 
+
+Blogs and resources used to help me set up:
+- https://medium.freecodecamp.org/how-to-set-up-jest-enzyme-like-a-boss-8455a2bc6d56 
+
