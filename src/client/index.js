@@ -10,4 +10,6 @@ ReactDom.render(
   document.getElementById('root')
 );
 
+console.log('process.env.PLATFORM', process.env.platform);
+
 
